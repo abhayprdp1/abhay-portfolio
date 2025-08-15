@@ -1,0 +1,33 @@
+/* Resume.css */
+.resume-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.resume-button {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.resume-button:hover {
+  background-color: #0056b3;
+}
+
+.resume-button.outline {
+  background-color: transparent;
+  border: 2px solid #007bff;
+  color: #007bff;
+}
+
+.resume-button.outline:hover {
+  background-color: #007bff;
+  color: white;
+}
