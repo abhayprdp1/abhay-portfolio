@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import { FaLinkedin, FaInstagram } from 'react-icons/fa';
 
-import Resume from './components/Resume';
 import Contact from './components/Contact';
 import Skills from './components/Skills';
 import profilePhoto from './images/profile-photo.jpg'; // Your photo
@@ -129,31 +128,28 @@ function App() {
               <div className="project-card">
                 <h3>🌦️ Weather App</h3>
                 <p>A simple React app that fetches live weather using the OpenWeatherMap API. It allows users to search and view weather conditions in any city.</p>
-                <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a> |
-                <a href="#" target="_blank" rel="noopener noreferrer"> Live Demo</a>
+                <a href="https://github.com/abhayprdp1" target="_blank" rel="noopener noreferrer">GitHub</a> |
+                <a href="https://github.com/abhayprdp1" target="_blank" rel="noopener noreferrer"> Live Demo</a>
               </div>
 
               {/* Project 2 */}
               <div className="project-card">
                 <h3>📝 To-Do List</h3>
                 <p>This app helps users manage tasks with add, delete, and mark-as-complete features. Built with React and local storage.</p>
-                <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a> |
-                <a href="#" target="_blank" rel="noopener noreferrer"> Live Demo</a>
+                <a href="https://github.com/abhayprdp1" target="_blank" rel="noopener noreferrer">GitHub</a> |
+                <a href="https://github.com/abhayprdp1" target="_blank" rel="noopener noreferrer"> Live Demo</a>
               </div>
 
               {/* Project 3 */}
               <div className="project-card">
                 <h3>🛒 E-Commerce UI</h3>
                 <p>A responsive front-end clone of a shopping website. Features include product listing and a cart interface built using React and Tailwind CSS.</p>
-                <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a> |
-                <a href="#" target="_blank" rel="noopener noreferrer"> Live Demo</a>
+                <a href="https://github.com/abhayprdp1" target="_blank" rel="noopener noreferrer">GitHub</a> |
+                <a href="https://github.com/abhayprdp1" target="_blank" rel="noopener noreferrer"> Live Demo</a>
               </div>
             </div>
           </div>
         </section>
-
-        {/* Resume (if needed) */}
-        {/* <Resume /> */}
 
         {/* Contact Section */}
         <Contact />
