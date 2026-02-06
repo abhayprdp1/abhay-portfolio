@@ -5,27 +5,27 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Website",
-      description: "A full-stack e-commerce platform built with React and Node.js featuring user authentication, payment integration, and admin dashboard.",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      title: "PPE Detection System",
+      description: "A computer vision project using YOLOv8 to automatically detect Personal Protective Equipment (PPE) compliance in real-time video feeds.",
+      technologies: ["Python", "YOLOv8", "Computer Vision", "Deep Learning"],
       liveLink: "#",
-      githubLink: "#"
+      githubLink: "https://github.com/abhayprdp1/PPE-DETECTION-USING-YOLO-V8"
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "A productivity app that helps teams organize tasks, set deadlines, and track progress with real-time collaboration features.",
-      technologies: ["React", "Firebase", "Material-UI"],
+      title: "Clinic Management System",
+      description: "A comprehensive management system for clinics to handle patient records, appointments, and inventory efficiently.",
+      technologies: ["Web Development", "Database Management"],
       liveLink: "#",
-      githubLink: "#"
+      githubLink: "https://github.com/abhayprdp1/Clinic-Management"
     },
     {
       id: 3,
-      title: "Weather Dashboard",
-      description: "A weather application that provides current conditions, forecasts, and interactive maps using multiple weather APIs.",
-      technologies: ["React", "OpenWeather API", "Chart.js"],
+      title: "URL Shortener",
+      description: "A web application that takes long URLs and converts them into shorter, manageable links for easier sharing.",
+      technologies: ["React", "Node.js", "API"],
       liveLink: "#",
-      githubLink: "#"
+      githubLink: "https://github.com/abhayprdp1/url-shortner"
     }
   ];
 
@@ -34,7 +34,7 @@ const Projects = () => {
       <div className="container">
         <h2>My Projects</h2>
         <p>Here are some of my recent projects that showcase my skills and creativity.</p>
-        
+
         <div className="projects-grid">
           {projects.map((project) => (
             <div key={project.id} className="project-card">
@@ -46,7 +46,6 @@ const Projects = () => {
                 ))}
               </div>
               <div className="project-links">
-                <a href={project.liveLink} className="btn btn-primary">Live Demo</a>
                 <a href={project.githubLink} className="btn btn-secondary">GitHub</a>
               </div>
             </div>

@@ -4,6 +4,7 @@ import { FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 import Contact from './components/Contact';
 import Skills from './components/Skills';
+import Projects from './components/Projects';
 import profilePhoto from './images/profile-photo.jpg'; // Your photo
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
               <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
               <li><a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a></li>
               <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a></li>
-              <li><a href="resume.pdf" download="Abhay_P_Resume.pdf" onClick={() => setMenuOpen(false)}>Resume</a></li>
+              <li><a href="ABHAY_P.pdf" download="Abhay_P_Resume.pdf" onClick={() => setMenuOpen(false)}>Resume</a></li>
               <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
             </ul>
           </nav>
@@ -42,11 +43,11 @@ function App() {
             <h1 className="hero-title slide-in-left">
               Hi, I'm <span className="highlight">Abhay P</span>
             </h1>
-            <p className="hero-subtitle">Full-Stack Developer</p>
+            <p className="hero-subtitle">Python Developer</p>
             <p className="hero-description">
-              Energetic Full-Stack Developer | Ready to Make an Impact
-              
-              A self-driven fresher with a strong foundation in MERN stack and UI/UX principles. I turn complex challenges into elegant, user-friendly solutions.
+              Energetic Python Developer | Ready to Make an Impact
+
+              A self-driven Python Developer with a strong foundation in Machine Learning and Artificial Intelligence. Skilled in building intelligent, data-driven solutions and translating complex models into scalable, real-world applications.
             </p>
             <div className="hero-buttons">
               <a href="#projects" className="btn btn-primary">View My Work</a>
@@ -68,49 +69,27 @@ function App() {
             <div className="about-content">
               <div className="about-text">
                 <h2 className="section-title">About Me</h2>
+                <h3 style={{ fontSize: '1.5rem', margin: '1rem 0', color: '#333' }}>Hi, I’m a Python Developer 👋</h3>
                 <p className="about-description">
-                  I'm a passionate Full-Stack Developer with a love for creating innovative 
-                  digital solutions. With expertise in both frontend and backend technologies, 
-                  I enjoy turning complex problems into simple, beautiful, and intuitive solutions.
+                  I’m a passionate Python Developer specializing in Artificial Intelligence and Machine Learning, focused on building intelligent, data-driven solutions. I enjoy solving complex problems using clean code, scalable architectures, and well-trained models.
                 </p>
                 <p className="about-description">
-                  My journey in web development started with curiosity about how websites work, 
-                  and it has evolved into a career where I get to build amazing user experiences 
-                  and robust applications every day.
+                  My journey started with curiosity about how data powers modern applications, and today I work on developing AI-driven systems, automating workflows, and deploying machine learning models that create real-world impact.
                 </p>
 
-                <div className="about-stats">
-                  <div className="stat-item">
-                    <span className="stat-number">10+</span>
-                    <span className="stat-label">Projects Completed</span>
-                  </div>
-                  <div className="stat-item">
-                    <span className="stat-number"></span>
-                    <span className="stat-label">Fresher</span>
-                  </div>
-                  <div className="stat-item">
-                    <span className="stat-number">100%</span>
-                    {/* <span className="stat-label">Client Satisfaction</span> */}
-                  </div>
-                </div>
 
                 <div className="about-highlights">
                   <h3>What I Do</h3>
                   <ul className="highlights-list">
-                    <li>🚀 Full-Stack Web Development</li>
-                    <li>📱 Responsive Design & Mobile Apps</li>
-                    <li>🔧 API Development & Integration</li>
+                    <li>🚀 Python Development & Automation</li>
+                    <li>🤖 Machine Learning & AI Solutions</li>
+                    <li>📊 Data Processing, Analysis & Visualization</li>
+                    <li>🔧 API Development & Model Deployment</li>
                   </ul>
                 </div>
               </div>
 
-              <div className="about-image">
-                <div className="image-container">
-                  <div className="image-overlay">
-                    <h2>Coding with passion</h2>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
         </section>
@@ -119,37 +98,7 @@ function App() {
         <Skills />
 
         {/* Projects Section */}
-        <section className="projects" id="projects">
-          <div className="container">
-            <h2>My Projects</h2>
-
-            <div className="projects-grid">
-              {/* Project 1 */}
-              <div className="project-card">
-                <h3>🌦️ Weather App</h3>
-                <p>A simple React app that fetches live weather using the OpenWeatherMap API. It allows users to search and view weather conditions in any city.</p>
-                <a href="https://github.com/abhayprdp1" target="_blank" rel="noopener noreferrer">GitHub</a> |
-                <a href="https://github.com/abhayprdp1" target="_blank" rel="noopener noreferrer"> Live Demo</a>
-              </div>
-
-              {/* Project 2 */}
-              <div className="project-card">
-                <h3>📝 To-Do List</h3>
-                <p>This app helps users manage tasks with add, delete, and mark-as-complete features. Built with React and local storage.</p>
-                <a href="https://github.com/abhayprdp1" target="_blank" rel="noopener noreferrer">GitHub</a> |
-                <a href="https://github.com/abhayprdp1" target="_blank" rel="noopener noreferrer"> Live Demo</a>
-              </div>
-
-              {/* Project 3 */}
-              <div className="project-card">
-                <h3>🛒 E-Commerce UI</h3>
-                <p>A responsive front-end clone of a shopping website. Features include product listing and a cart interface built using React and Tailwind CSS.</p>
-                <a href="https://github.com/abhayprdp1" target="_blank" rel="noopener noreferrer">GitHub</a> |
-                <a href="https://github.com/abhayprdp1" target="_blank" rel="noopener noreferrer"> Live Demo</a>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Projects />
 
         {/* Contact Section */}
         <Contact />
