@@ -1,0 +1,120 @@
+.taj-projects-section {
+  margin-bottom: 7rem;
+}
+
+.projects-list-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-list-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .project-list-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.project-list-row:hover {
+  border-bottom-color: rgba(16, 185, 129, 0.4);
+}
+
+.proj-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+}
+
+.proj-num {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #9ca3af;
+  letter-spacing: 0.05em;
+  font-family: 'Outfit', sans-serif;
+}
+
+.proj-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.proj-title {
+  font-size: 2.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.1;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  transition: color 0.25s ease;
+}
+
+@media (min-width: 768px) {
+  .proj-title {
+    font-size: 3rem;
+  }
+}
+
+.project-list-row:hover .proj-title {
+  color: #10b981;
+}
+
+.proj-tech-line {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.proj-desc-text {
+  font-size: 0.925rem;
+  color: #6b7280;
+  margin: 0.5rem 0 0;
+  max-width: 650px;
+  line-height: 1.5;
+}
+
+.proj-github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+@media (min-width: 768px) {
+  .proj-github-link {
+    align-self: center;
+  }
+}
+
+.proj-github-link:hover {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+}

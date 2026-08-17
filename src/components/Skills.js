@@ -1,92 +1,105 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import {
+  FaJsSquare,
+  FaReact,
+  FaPython,
+  FaNodeJs,
+  FaGitAlt,
+  FaDatabase
+} from 'react-icons/fa';
+import {
+  SiNextdotjs,
+  SiTailwindcss,
+  SiExpress,
+  SiMongodb,
+  SiMysql,
+  SiPostgresql,
+  SiDocker,
+  SiPostman,
+  SiOpencv
+} from 'react-icons/si';
+import SpinningFanIcon from './SpinningFanIcon';
 import './Skills.css';
 
 const Skills = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const skillsData = [
-    {
-      category: "Frontend Development",
-      skills: [
-        { name: "React", percentage: 90 },
-        { name: "JavaScript", percentage: 85 },
-        { name: "HTML/CSS", percentage: 95 },
-      ]
-    },
-    {
-      category: "Backend Development",
-      skills: [
-        { name: "Node.js", percentage: 88 },
-        { name: "Python", percentage: 75 },
-        { name: "MongoDB", percentage: 80 },
-        { name: "Express.js", percentage: 85 },
-      ]
-    },
-    {
-      category: "Tools & Others",
-      skills: [
-        { name: "Git", percentage: 90 },
-        { name: "VS Code", percentage: 95 },
-        { name: "Figma", percentage: 70 },
-        { name: "AWS", percentage: 60 }
-      ]
-    }
-  ];
-
-  const technologies = [
-    "React", "Node.js", "JavaScript", "Python", "MongoDB",
-    "Express.js", "Git", "HTML/CSS", "AWS", "REST APIs"
-  ];
-
   return (
-    <section className="skills-section" id="skills">
-      <div className="skills-container">
-        <div className="skills-header">
-          <h2>My Skills</h2>
-          <p>Technologies I work with to build amazing projects</p>
+    <section id="my-stack" className="taj-stack-section reveal">
+      <div className="section-badge-header">
+        <SpinningFanIcon size={20} />
+        <span>MY STACK</span>
+      </div>
+
+      <div className="stack-rows-container">
+        {/* Row 1: FRONTEND */}
+        <div className="stack-category-row reveal">
+          <div className="stack-cat-label">FRONTEND</div>
+          <div className="stack-items-wrap">
+            <span className="stack-badge-pill">
+              <FaJsSquare className="stack-icon icon-js" /> JavaScript
+            </span>
+            <span className="stack-badge-pill">
+              <FaReact className="stack-icon icon-react" /> React
+            </span>
+            <span className="stack-badge-pill">
+              <SiNextdotjs className="stack-icon icon-next" /> Next.js
+            </span>
+            <span className="stack-badge-pill">
+              <SiTailwindcss className="stack-icon icon-tailwind" /> Tailwind CSS
+            </span>
+          </div>
         </div>
 
-        <div className="skills-grid">
-          {skillsData.map((category, index) => (
-            <div key={index} className="skill-category">
-              <h3>{category.category}</h3>
-              <div className="skills-list">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="skill-item">
-                    <div className="skill-info">
-                      <span className="skill-name">{skill.name}</span>
-                      <span className="skill-percentage">{skill.percentage}%</span>
-                    </div>
-                    <div className="skill-bar">
-                      <div
-                        className="skill-progress"
-                        style={{
-                          width: isVisible ? `${skill.percentage}%` : '0%'
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+        {/* Row 2: BACKEND */}
+        <div className="stack-category-row reveal">
+          <div className="stack-cat-label">BACKEND</div>
+          <div className="stack-items-wrap">
+            <span className="stack-badge-pill">
+              <FaPython className="stack-icon icon-python" /> Python
+            </span>
+            <span className="stack-badge-pill">
+              <FaNodeJs className="stack-icon icon-node" /> Node.js
+            </span>
+            <span className="stack-badge-pill">
+              <SiExpress className="stack-icon icon-express" /> Express.js
+            </span>
+            <span className="stack-badge-pill">
+              <FaDatabase className="stack-icon icon-db" /> REST APIs
+            </span>
+          </div>
         </div>
 
-        <div className="technologies-section">
-          <h3>Technologies I Use</h3>
-          <div className="tech-badges">
-            {technologies.map((tech, index) => (
-              <span key={index} className="tech-badge">
-                {tech}
-              </span>
-            ))}
+        {/* Row 3: DATABASE */}
+        <div className="stack-category-row reveal">
+          <div className="stack-cat-label">DATABASE</div>
+          <div className="stack-items-wrap">
+            <span className="stack-badge-pill">
+              <SiMongodb className="stack-icon icon-mongo" /> MongoDB
+            </span>
+            <span className="stack-badge-pill">
+              <SiMysql className="stack-icon icon-mysql" /> MySQL
+            </span>
+            <span className="stack-badge-pill">
+              <SiPostgresql className="stack-icon icon-postgres" /> PostgreSQL
+            </span>
+          </div>
+        </div>
+
+        {/* Row 4: TOOLS */}
+        <div className="stack-category-row reveal">
+          <div className="stack-cat-label">TOOLS</div>
+          <div className="stack-items-wrap">
+            <span className="stack-badge-pill">
+              <FaGitAlt className="stack-icon icon-git" /> Git
+            </span>
+            <span className="stack-badge-pill">
+              <SiDocker className="stack-icon icon-docker" /> Docker
+            </span>
+            <span className="stack-badge-pill">
+              <SiPostman className="stack-icon icon-postman" /> Postman
+            </span>
+            <span className="stack-badge-pill">
+              <SiOpencv className="stack-icon icon-vision" /> YOLOv8 & OpenCV
+            </span>
           </div>
         </div>
       </div>

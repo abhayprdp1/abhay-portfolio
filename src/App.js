@@ -1,135 +1,205 @@
 import React, { useState } from 'react';
 import './App.css';
-import { FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
-import Contact from './components/Contact';
+import IntroAnimation from './components/IntroAnimation';
+import CursorRibbonCanvas from './components/CursorRibbonCanvas';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import profilePhoto from './images/profile-photo.jpg'; // Your photo
+import Contact from './components/Contact';
+import SpinningFanIcon from './components/SpinningFanIcon';
+import ScrollProgressBar from './components/ScrollProgressBar';
+import useScrollReveal from './hooks/useScrollReveal';
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
+  const [activeNav, setActiveNav] = useState('Home');
+
+  // Trigger scroll reveal observer for smooth scroll transitions
+  useScrollReveal();
+
+  const navItems = [
+    { label: 'Home', href: '#banner' },
+    { label: 'About Me', href: '#about-me' },
+    { label: 'My Stack', href: '#my-stack' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Contact', href: '#contact' }
+  ];
+
+  const handleNavClick = (label, href) => {
+    setActiveNav(label);
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const experiences = [
+    {
+      id: 1,
+      company: "InThings Technologies",
+      role: "Software Engineer",
+      period: "Sept 2025 - Present"
+    }
+  ];
 
   return (
     <div className="App">
-      {/* Header */}
-      <header className="header">
-        <div className="container">
-          <h1 className="logo">Abhay P</h1>
+      {/* 1. Opening Particle Text Animation (Preserved) */}
+      {showIntro && (
+        <IntroAnimation onFinish={() => setShowIntro(false)} />
+      )}
 
-          {/* Hamburger icon */}
-          <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-            ☰
-          </div>
+      {/* 2. Interactive 3D WebGL Glowing Tube Light Stream Canvas Background (Preserved) */}
+      <CursorRibbonCanvas />
 
-          <nav className={`nav ${menuOpen ? 'open' : ''}`}>
-            <ul className="nav-list">
-              <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
-              <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
-              <li><a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a></li>
-              <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a></li>
-              <li><a href="ABHAY_P.pdf" download="Abhay_P_Resume.pdf" onClick={() => setMenuOpen(false)}>Resume</a></li>
-              <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
-            </ul>
+      {/* 3. Fixed Vertical Scroll Progress Bar on Right Side (Shown ONLY after intro finishes) */}
+      {!showIntro && <ScrollProgressBar />}
+
+      {/* Floating Glassmorphic Header Navigation */}
+      <header className="fixed-nav-header">
+        <div className="nav-container">
+          <a href="#banner" className="nav-brand">
+            ABHAY P
+          </a>
+
+          <nav className="nav-links-wrapper">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(item.label, item.href);
+                }}
+                className={`nav-pill-link ${activeNav === item.label ? 'active' : ''}`}
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
+
+          <a
+            href="ABHAY_P_RESUME.pdf"
+            download="ABHAY_P_RESUME.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-cta-btn"
+          >
+            Resume
+          </a>
         </div>
       </header>
 
-      {/* Main */}
-      <main>
-        {/* Hero Section */}
-        <section className="hero" id="home">
-          <div className="hero-content">
-            <h1 className="hero-title slide-in-left">
-              Hi, I'm <span className="highlight">Abhay P</span>
-            </h1>
-            <p className="hero-subtitle">Python Developer</p>
-            <p className="hero-description">
-              Energetic Python Developer | Ready to Make an Impact
+      <main className="portfolio-main">
+        {/* HERO BANNER SECTION (Role: Software Engineer, InThings Technologies) */}
+        <section id="banner" className="hero-banner-section reveal">
+          <div className="banner-content">
+            <div className="banner-left-col reveal-left">
+              <h1 className="banner-hero-title">
+                <span className="accent-glow-text">SOFTWARE</span>
+                <br />
+                <span className="subtitle-hero-text">ENGINEER</span>
+              </h1>
 
-              A self-driven Python Developer with a strong foundation in Machine Learning and Artificial Intelligence. Skilled in building intelligent, data-driven solutions and translating complex models into scalable, real-world applications.
-            </p>
-            <div className="hero-buttons">
-              <a href="#projects" className="btn btn-primary">View My Work</a>
-              <a href="#contact" className="btn btn-secondary">Contact Me</a>
-            </div>
-          </div>
-          <div className="hero-image">
-            <img
-              src={profilePhoto}
-              alt="Abhay P - Full Stack Developer"
-              className="profile-photo"
-            />
-          </div>
-        </section>
+              <p className="banner-description">
+                Hi! I'm <span className="highlight-name">Abhay P</span>. A Software Engineer at <span className="highlight-name">InThings Technologies</span> building high-performance, scalable web applications, modular software architectures & data-driven systems.
+              </p>
 
-        {/* About Section */}
-        <section className="about" id="about">
-          <div className="container">
-            <div className="about-content">
-              <div className="about-text">
-                <h2 className="section-title">About Me</h2>
-                <h3 style={{ fontSize: '1.5rem', margin: '1rem 0', color: '#333' }}>Hi, I’m a Python Developer 👋</h3>
-                <p className="about-description">
-                  I’m a passionate Python Developer specializing in Artificial Intelligence and Machine Learning, focused on building intelligent, data-driven solutions. I enjoy solving complex problems using clean code, scalable architectures, and well-trained models.
-                </p>
-                <p className="about-description">
-                  My journey started with curiosity about how data powers modern applications, and today I work on developing AI-driven systems, automating workflows, and deploying machine learning models that create real-world impact.
-                </p>
+              <div className="banner-actions">
+                <a href="#contact" className="cta-talk-btn">
+                  <span>Let's Talk</span>
+                  <FaExternalLinkAlt size={13} />
+                </a>
 
-
-                <div className="about-highlights">
-                  <h3>What I Do</h3>
-                  <ul className="highlights-list">
-                    <li>🚀 Python Development & Automation</li>
-                    <li>🤖 Machine Learning & AI Solutions</li>
-                    <li>📊 Data Processing, Analysis & Visualization</li>
-                    <li>🔧 API Development & Model Deployment</li>
-                  </ul>
+                <div className="availability-badge">
+                  <span className="glowing-pulse-dot" />
+                  <span>Available for Software Engineering opportunities</span>
                 </div>
               </div>
+            </div>
 
+            <div className="banner-right-stats reveal-right">
+              <div className="stat-card">
+                <h3 className="stat-num">1+</h3>
+                <p className="stat-label">Year of Experience</p>
+              </div>
 
+              <div className="stat-card">
+                <h3 className="stat-num">10+</h3>
+                <p className="stat-label">Completed Projects</p>
+              </div>
+
+              <div className="stat-card">
+                <h3 className="stat-num">5K+</h3>
+                <p className="stat-label">Hours Coded</p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Skills Section */}
+        {/* ABOUT ME SECTION */}
+        <section id="about-me" className="about-me-section reveal">
+          <div className="about-me-quote-card reveal">
+            <h2 className="quote-heading">
+              "I believe in a data-driven & user-centered software engineering approach, ensuring every application is built for scale, performance, and real-world impact."
+            </h2>
+            <p className="quote-sub-tag">This is me.</p>
+          </div>
+
+          <div className="about-me-grid">
+            <div className="about-left-headline reveal-left">
+              <h3 className="about-headline">Hi, I'm Abhay.</h3>
+            </div>
+
+            <div className="about-right-body reveal-right">
+              <p className="about-text-p">
+                I'm a Software Engineer at InThings Technologies dedicated to turning complex requirements into clean, high-performance software solutions.
+              </p>
+              <p className="about-text-p">
+                My approach focuses on building scalable, reliable architectures tailored to business objectives. By prioritizing code quality, robust system design, and API efficiency, I deliver software applications that drive tangible value.
+              </p>
+
+              <div className="about-highlights-pills">
+                <span className="about-pill">🚀 Software Engineering & Architecture</span>
+                <span className="about-pill">💻 Full-Stack Web Development</span>
+                <span className="about-pill">🤖 AI & Machine Learning Integration</span>
+                <span className="about-pill">🔧 Scalable API & Backend Systems</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* MY STACK SECTION (Inspired by tajmirul.site) */}
         <Skills />
 
-        {/* Projects Section */}
+        {/* MY EXPERIENCE SECTION (InThings Technologies, Sept 2025 - Present) */}
+        <section id="experience" className="taj-experience-section reveal">
+          <div className="section-badge-header">
+            <SpinningFanIcon size={20} />
+            <span>MY EXPERIENCE</span>
+          </div>
+
+          <div className="experience-list-rows">
+            {experiences.map((exp) => (
+              <div key={exp.id} className="experience-list-row reveal">
+                <div>
+                  <span className="exp-company-name">{exp.company}</span>
+                  <h3 className="exp-role-title">{exp.role}</h3>
+                </div>
+                <span className="exp-period-badge">{exp.period}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* FEATURED PROJECTS SECTION (Inspired by tajmirul.site) */}
         <Projects />
 
-        {/* Contact Section */}
+        {/* CONTACT SECTION */}
         <Contact />
       </main>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <p>&copy; 2025 Abhay P. All rights reserved.</p>
-
-          <div className="social-icons">
-            <a
-              href="https://www.linkedin.com/in/pabhay"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <FaLinkedin size={24} />
-            </a>
-
-            <a
-              href="https://www.instagram.com/abh4.y"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <FaInstagram size={24} />
-            </a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

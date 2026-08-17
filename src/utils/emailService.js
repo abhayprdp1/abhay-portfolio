@@ -1,88 +1,51 @@
-import emailjs from '@emailjs/browser';
-
-// EmailJS configuration - using direct values as fallback
-const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'abhayprdp1';
-const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_5x9fp6d';
-const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '83SDKn_QLWyfcfEFI';
-
-console.log('=== EmailJS Service Initialization ===');
-console.log('Service ID:', SERVICE_ID);
-console.log('Template ID:', TEMPLATE_ID);
-console.log('Public Key:', PUBLIC_KEY ? PUBLIC_KEY.substring(0, 8) + '...' : 'undefined');
-
-// Initialize EmailJS
-emailjs.init(PUBLIC_KEY);
+// Direct Automatic Email Service using FormSubmit.co API
+// Sends messages directly & automatically to abhayprdp1@gmail.com
 
 export const sendEmail = async (formData) => {
-  console.log('=== sendEmail function called ===');
-  console.log('Form data received:', formData);
-  
+  console.log('=== Sending Automatic Email to abhayprdp1@gmail.com ===');
+  console.log('Form data:', formData);
+
   try {
-    // Validate form data
     if (!formData.from_name || !formData.from_email || !formData.message) {
-      const missingFields = [];
-      if (!formData.from_name) missingFields.push('name');
-      if (!formData.from_email) missingFields.push('email');
-      if (!formData.message) missingFields.push('message');
-      
-      console.error('❌ Missing form fields:', missingFields);
-      throw new Error(`Please fill in all required fields: ${missingFields.join(', ')}`);
+      throw new Error('Please fill in all required fields.');
     }
 
-    const emailParams = {
-      from_name: formData.from_name,
-      from_email: formData.from_email,
-      subject: formData.subject || 'New Contact Form Submission',
-      message: formData.message,
-      to_name: 'Abhay P',
-      reply_to: formData.from_email,
-    };
+    // Post directly to FormSubmit API endpoint for abhayprdp1@gmail.com
+    const response = await fetch('https://formsubmit.co/ajax/abhayprdp1@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formData.from_name,
+        email: formData.from_email,
+        _subject: formData.subject || `New Portfolio Message from ${formData.from_name}`,
+        message: formData.message,
+        _captcha: 'false' // Disable captcha for seamless submission
+      })
+    });
 
-    console.log('📧 Sending email with parameters:', emailParams);
-    console.log('📧 Using Service ID:', SERVICE_ID);
-    console.log('📧 Using Template ID:', TEMPLATE_ID);
+    const data = await response.json();
+    console.log('FormSubmit API Response:', data);
 
-    // Send email using EmailJS
-    const result = await emailjs.send(
-      SERVICE_ID,
-      TEMPLATE_ID,
-      emailParams,
-      PUBLIC_KEY
-    );
-
-    console.log('✅ EmailJS Response:', result);
-
-    // Check if email was sent successfully
-    if (result.status === 200) {
-      console.log('✅ Email sent successfully!');
-      return { success: true, data: result };
+    if (response.ok) {
+      return { success: true, data };
     } else {
-      console.error('❌ Unexpected status code:', result.status);
-      throw new Error(`Failed to send email. Status: ${result.status}`);
+      throw new Error(data.message || 'Failed to send message.');
     }
-
   } catch (error) {
-    console.error('❌ EmailJS Error Details:');
-    console.error('Error message:', error.message);
-    console.error('Error object:', error);
-    
-    return { 
-      success: false, 
-      error: error.message || 'Failed to send email. Please try again.' 
+    console.error('Email Sending Error:', error);
+    return {
+      success: false,
+      error: error.message || 'Failed to send email.'
     };
   }
 };
 
-// Test function to verify EmailJS setup
 export const testEmailSetup = () => {
-  console.log('EmailJS Configuration:');
-  console.log('Service ID:', SERVICE_ID);
-  console.log('Template ID:', TEMPLATE_ID);
-  console.log('Public Key:', PUBLIC_KEY ? 'Set' : 'Not Set');
-  
   return {
-    serviceId: SERVICE_ID,
-    templateId: TEMPLATE_ID,
-    publicKey: PUBLIC_KEY ? 'Set' : 'Not Set'
+    targetEmail: 'abhayprdp1@gmail.com',
+    status: 'Ready'
   };
 };
