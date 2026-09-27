@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
-import IntroAnimation from './components/IntroAnimation';
 import CursorRibbonCanvas from './components/CursorRibbonCanvas';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -12,7 +11,6 @@ import ScrollProgressBar from './components/ScrollProgressBar';
 import useScrollReveal from './hooks/useScrollReveal';
 
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
   const [activeNav, setActiveNav] = useState('Home');
 
   // Trigger scroll reveal observer for smooth scroll transitions
@@ -46,16 +44,11 @@ function App() {
 
   return (
     <div className="App">
-      {/* 1. Opening Particle Text Animation (Preserved) */}
-      {showIntro && (
-        <IntroAnimation onFinish={() => setShowIntro(false)} />
-      )}
-
-      {/* 2. Interactive 3D WebGL Glowing Tube Light Stream Canvas Background (Preserved) */}
+      {/* Interactive 3D WebGL Glowing Tube Light Stream Canvas Background */}
       <CursorRibbonCanvas />
 
-      {/* 3. Fixed Vertical Scroll Progress Bar on Right Side (Shown ONLY after intro finishes) */}
-      {!showIntro && <ScrollProgressBar />}
+      {/* Fixed Vertical Scroll Progress Bar on Right Side */}
+      <ScrollProgressBar />
 
       {/* Floating Glassmorphic Header Navigation */}
       <header className="fixed-nav-header">
